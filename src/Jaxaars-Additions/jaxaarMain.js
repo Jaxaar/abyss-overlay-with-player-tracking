@@ -1,53 +1,57 @@
+const { saveJSONFile, readJSONFile } = require('./jaxaarHelpers.js');
 
-const fs = require('fs');
 
 const opponentFileName = "opponentData.json"
+const jaxaarOpponentData = {}
 
-let opponents = {}
-
-
-function initializeOpponents(){
-    opponents = readJSONFile(opponentFileName)
+jaxaarOpponentData.opponents = {
+    "players": {},
 }
 
-function storeOpponents(){
-    saveJSONFile(opponentFileName)
+jaxaarOpponentData.chat = []
+
+jaxaarOpponentData.initializeOpponents = function () {
+    const fileJSON = readJSONFile(opponentFileName)
+    if(fileJSON){
+        this.opponents = fileJSON
+    }
 }
 
-
-function handleChatEvent(msg, data){
-    console.log(msg);
-    console.log(opponents)
+jaxaarOpponentData.storeOpponents = function () {
+    console.log(this.opponents)
+    saveJSONFile(opponentFileName, this.opponents)
+    this.saveGameChat("gameChat.json")
 }
 
-function trackPlayers(){
-
-}
-
-
-function readJSONFile(fileName){
+jaxaarOpponentData.saveGameChat  = function (str){
+    let jsonObj = {}
+    console.log(this.chat)
     try{
-        let rawdata = fs.readFileSync(fileName);
-        let opponents = JSON.parse(rawdata);
-        return opponents
+        let rawdata = fs.readFileSync(str);
+        jsonObj = JSON.parse(rawdata);
+        jsonObj.chat.push(this.chat)
     }
     catch{
-        console.log("No valid file")
-        return {
-            "players": {},
-        }
+        jsonObj = {"chat": []}
+        jsonObj.chat.push(this.chat)
     }
-}
 
-function saveJSONFile(str){
-    let data = JSON.stringify(opponents);
-    fs.writeFileSync(str, data);
-    console.log("Opponents File Saved")
+    saveJSONFile(str, jsonObj)
 }
 
 
+jaxaarOpponentData.handleChatEvent = function (msg, data){
+    console.log(msg);
+    this.chat.push(msg)
+    console.log(this.opponents)
+    console.log(this.chat)
+}
+
+jaxaarOpponentData.trackPlayers = function (){
+
+}
 
 
 module.exports = {
-    trackPlayers, handleChatEvent, initializeOpponents, storeOpponents
+    jaxaarOpponentData
 }

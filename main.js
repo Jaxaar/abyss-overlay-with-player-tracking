@@ -9,7 +9,7 @@ const { version } = require('./package.json');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 isDev && !app.isPackaged && require('electron-reloader')(module)?.catch(() => {});
 
-const {storeOpponents} = require('./src/Jaxaars-Additions/jaxaarMain')
+const {jaxaarOpponentData} = require('./src/Jaxaars-Additions/jaxaarMain')
 
 if (process.platform === 'win32') app.setAppUserModelId('AbyssOverlay');
 
@@ -110,10 +110,13 @@ app.whenReady().then(() => {
     }
 });
 
+
+app.jaxaarOpponentData = jaxaarOpponentData
 app.on('before-quit', () => {
     console.log("Quitting...")
-    storeOpponents()
+    jaxaarOpponentData.storeOpponents()
 });
+
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

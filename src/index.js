@@ -29,7 +29,7 @@ const { ModalWindow } = require('./modalWindow.js');
 const { PopupStats } = require('./popupStats.js');
 const { Clients } = require('./clients.js');
 const { Cache } = require('./cache.js');
-const { trackPlayers, handleChatEvent, initializeOpponents, saveOpponents } = require('./Jaxaars-Additions/jaxaarMain.js');
+const jaxaarOpponentData = app.jaxaarOpponentData
 
 
 config.delete('players');
@@ -761,6 +761,7 @@ ipcRenderer.on('autowho-err', () => {
     });
 });
 
+
 function main(event){
     currentWindow = remote.BrowserWindow.getAllWindows(); currentWindow = currentWindow[0];
 
@@ -787,7 +788,7 @@ function main(event){
     }
 
     initialize();
-    initializeOpponents();
+    jaxaarOpponentData.initializeOpponents();
 
     const tail = new Tail(logpath, {/*logger: con, */useWatchFile: true, nLines: 1, fsWatchOptions: {interval: 100}});
     tail.on('line', (data) => {
@@ -795,7 +796,7 @@ function main(event){
         if (k !== -1){
             const msg = data.substring(k+7).replace(/(§|�)([0-9]|a|b|e|d|f|k|l|m|n|o|r|c)/gm, '');
             // console.log(msg);
-            handleChatEvent(msg, data)
+            jaxaarOpponentData.handleChatEvent(msg, data)
             
             let changed = false;
             if (msg.indexOf('ONLINE:') !== -1 && msg.indexOf(',') !== -1){
