@@ -13,6 +13,7 @@ const packageJSON = require('../package.json');
 const electron_log = require('electron-log'); electron_log.catchErrors({ showDialog: true }); Object.assign(console, electron_log.functions);
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
+
 try{require('electron-json-config');}
 catch{
     if (process.platform !== 'darwin'){
@@ -28,6 +29,7 @@ const { ModalWindow } = require('./modalWindow.js');
 const { PopupStats } = require('./popupStats.js');
 const { Clients } = require('./clients.js');
 const { Cache } = require('./cache.js');
+const { trackPlayers, handleChatEvent, initializeOpponents, saveOpponents } = require('./Jaxaars-Additions/jaxaarMain.js');
 
 
 config.delete('players');
@@ -785,20 +787,26 @@ function main(event){
     }
 
     initialize();
+    initializeOpponents();
 
     const tail = new Tail(logpath, {/*logger: con, */useWatchFile: true, nLines: 1, fsWatchOptions: {interval: 100}});
     tail.on('line', (data) => {
         const k = data.indexOf('[CHAT]');
         if (k !== -1){
             const msg = data.substring(k+7).replace(/(§|�)([0-9]|a|b|e|d|f|k|l|m|n|o|r|c)/gm, '');
-            //console.log(msg);
+            // console.log(msg);
+            handleChatEvent(msg, data)
+            
             let changed = false;
             if (msg.indexOf('ONLINE:') !== -1 && msg.indexOf(',') !== -1){
                 if (inlobby){players = [];} inlobby = false;
                 let who = msg.substring(8).split(', ');
                 if (config.get('settings.shrink', true)){currentWindow.setSize(currentWindow.webContents.getOwnerBrowserWindow().getBounds().width, winheight, true); $('#show').css('transform', 'rotate(0deg)');}
                 if ($('#infodiv').css('display') === 'none' && $('#settingsdiv').css('display') === 'none'){$('#titles').css('display', 'block'); $('#indexdiv').css('display', 'block');}
-                //con.log(who);
+                
+                // console.log(who);
+                // con.log(who);
+
                 for (let i = 0; i < who.length; i++){
                     if (who[i].indexOf('[') !== -1) who[i] = who[i].substring(0, who[i].indexOf('[')-1);
                     let contains = false;
