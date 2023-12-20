@@ -114,7 +114,7 @@ app.whenReady().then(() => {
 app.jaxaarOpponentData = jaxaarOpponentData
 app.on('before-quit', () => {
     console.log("Quitting...")
-    jaxaarOpponentData.storeOpponents()
+    jaxaarOpponentData.closeOpponents()
 });
 
 

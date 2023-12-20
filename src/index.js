@@ -796,7 +796,7 @@ function main(event){
         if (k !== -1){
             const msg = data.substring(k+7).replace(/(§|�)([0-9]|a|b|e|d|f|k|l|m|n|o|r|c)/gm, '');
             // console.log(msg);
-            jaxaarOpponentData.handleChatEvent(msg, data)
+            jaxaarOpponentData.handleChatEvent(msg, data, players, user)
             
             let changed = false;
             if (msg.indexOf('ONLINE:') !== -1 && msg.indexOf(',') !== -1){
@@ -1013,11 +1013,10 @@ function main(event){
                     }
                 }
             }
-            //con.log(msg);
-            /*con.log(msg);
-            let temp = '';
-            for (let i = 0; i < players.length; i++) temp += players[i].name + ' ';
-            con.log(temp);*/
+            // con.log(msg);
+            // let temp = '';
+            // for (let i = 0; i < players.length; i++) temp += players[i].name + ' ';
+            // con.log(temp);
         }
         else{
             let msg = data;
