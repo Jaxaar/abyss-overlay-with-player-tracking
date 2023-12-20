@@ -1,1 +1,71 @@
-{"players":{"southpaw16":{"name":"southpaw16","gamesPlayed":23,"YouFinaled":23,"brokeYourBed":1},"silverhalo_":{"name":"silverhalo_","gamesPlayed":23,"YouFinaled":23},"boristhedog22":{"name":"boristhedog22","gamesPlayed":23},"toast_br":{"name":"toast_br","gamesPlayed":23},"dreamvsty":{"name":"dreamvsty","gamesPlayed":23},"markercroker":{"name":"markercroker","gamesPlayed":23},"___selah___":{"name":"___selah___","gamesPlayed":23,"YouFinaled":23},"showblown":{"name":"showblown","gamesPlayed":23},"jackamel":{"name":"jackamel","gamesPlayed":23},"mr_apple_pie":{"name":"mr_apple_pie","FinaledYou":23,"gamesPlayed":22,"YouFinaled":22},"benben17s":{"name":"benben17s","gamesPlayed":23},"shiestydecember":{"name":"shiestydecember","gamesPlayed":23},"jumpyrelaxo":{"name":"jumpyrelaxo","gamesPlayed":23},"vtcrafter14":{"name":"vtcrafter14","gamesPlayed":23,"YouFinaled":23},"phili_299":{"name":"phili_299","gamesPlayed":23}}}
+{
+    "players": {
+        "southpaw16": {
+            "name": "southpaw16",
+            "gamesPlayed": 24,
+            "YouFinaled": 24,
+            "brokeYourBed": 2
+        },
+        "silverhalo_": {
+            "name": "silverhalo_",
+            "gamesPlayed": 24,
+            "YouFinaled": 24
+        },
+        "boristhedog22": {
+            "name": "boristhedog22",
+            "gamesPlayed": 24
+        },
+        "toast_br": {
+            "name": "toast_br",
+            "gamesPlayed": 24
+        },
+        "dreamvsty": {
+            "name": "dreamvsty",
+            "gamesPlayed": 24
+        },
+        "markercroker": {
+            "name": "markercroker",
+            "gamesPlayed": 24
+        },
+        "___selah___": {
+            "name": "___selah___",
+            "gamesPlayed": 24,
+            "YouFinaled": 24
+        },
+        "showblown": {
+            "name": "showblown",
+            "gamesPlayed": 24
+        },
+        "jackamel": {
+            "name": "jackamel",
+            "gamesPlayed": 24
+        },
+        "mr_apple_pie": {
+            "name": "mr_apple_pie",
+            "FinaledYou": 24,
+            "gamesPlayed": 23,
+            "YouFinaled": 23
+        },
+        "benben17s": {
+            "name": "benben17s",
+            "gamesPlayed": 24
+        },
+        "shiestydecember": {
+            "name": "shiestydecember",
+            "gamesPlayed": 24
+        },
+        "jumpyrelaxo": {
+            "name": "jumpyrelaxo",
+            "gamesPlayed": 24
+        },
+        "vtcrafter14": {
+            "name": "vtcrafter14",
+            "gamesPlayed": 24,
+            "YouFinaled": 24
+        },
+        "phili_299": {
+            "name": "phili_299",
+            "gamesPlayed": 24
+        }
+    }
+}

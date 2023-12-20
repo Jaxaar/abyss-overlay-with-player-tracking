@@ -1119,7 +1119,10 @@ $(() => {
             let tgmode = config.get('settings.bwgmode', ''), tgamemode = config.get('settings.gamemode', 0), trpc = config.get('settings.rpc_stats', 1);
             if (tgmode === '' || tgmode === undefined){$('#overall').addClass('selected'); $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Overall');}
             else if (tgmode === 'eight_one_'){$('#solos').addClass('selected'); $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Solos');}
-            else if (tgmode === 'eight_two_'){$('#doubles').addClass('selected'); $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Doubles');}
+            else if (tgmode === 'eight_two_'){
+                $('#doubles').addClass('selected');
+                $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Doubles');
+            }
             else if (tgmode === 'four_three_'){$('#threes').addClass('selected'); $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Threes');}
             else if (tgmode === 'four_four_'){$('#fours').addClass('selected'); $('#gmbtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Fours');}
             if (tgamemode === 0 || tgamemode === undefined){$('#bw').addClass('selected'); $('#gamemodebtn').find('.custom-select').find('.custom-select_trigger').find('span').html('Bedwars');}

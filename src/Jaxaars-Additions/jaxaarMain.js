@@ -69,7 +69,7 @@ jaxaarOpponentData.saveGameChat  = function (str){
 jaxaarOpponentData.handleChatEvent = function (msg, data, players, user){
 
     this.user = user
-    // console.log(msg);
+    console.log(msg);
     this.detectColor(msg)
     this.chat.push(msg)
     // console.log(players)
